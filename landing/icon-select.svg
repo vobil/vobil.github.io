@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.828 8.141" width="14.828" height="8.414">
+    <defs>
+        <style>
+            .cls-chevron-down {
+                fill: none;
+                stroke: #65d7d6;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 1px
+            }
+        </style>
+    </defs>
+    <path data-name="Icon feather-chevron-down" d="m9 13.5 6 6 6-6" transform="translate(-7.586 -12.086)"
+        class="cls-chevron-down" />
+</svg>

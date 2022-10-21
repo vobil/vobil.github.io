@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+    <defs>
+        <filter id="5eavt0kj5a" x="0" y="0" width="21" height="21" filterUnits="userSpaceOnUse">
+            <feOffset/>
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feFlood flood-color="#1cd18c"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g style="filter:url(#5eavt0kj5a)">
+        <circle data-name="onlie" cx="3" cy="3" r="3" transform="translate(7.5 7.5)" style="fill:#1cd18c"/>
+    </g>
+</svg>
