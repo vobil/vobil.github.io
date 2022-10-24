@@ -36,10 +36,15 @@ p, ol, li {
   padding: 0px;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 ol {
   display: flex;
   padding: 10px 0px;
   gap: 40px;
+  z-index: 5;
 }
 
 ol.select-options {
@@ -67,6 +72,25 @@ ol.select-options li {
 
 ol.select-options li:hover {
   background-color: #65d7d6;
+}
+
+ol.desc-list {
+  flex-direction: column;
+  gap: 0px;
+}
+
+input ~ span.error {
+  display: block;
+  position: absolute;
+  top: 16px;
+  right: 0px;
+  font-size: 12px;
+  color: #ff2e56;
+  opacity: 0;
+}
+
+input ~ span.error.show {
+  opacity: 1;
 }
 
 input[type='text'] {
@@ -141,21 +165,50 @@ input:not([type='checkbox']):hover {
 }
 
 button {
+  --btn-background: #ea5a25;
+  position: relative;
   height: 32px;
   padding: 5px 30px;
   font-size: 15px;
   color: #ffffff;
-  background-color: #ea5a25;
+  background-color: var(--btn-background);
   border: 1px solid;
   border-radius: 16px;
   cursor: pointer;
 }
 button:hover {
-  background-color: #f46835;
+  --btn-background: #f46835;
+  background-color: var(--btn-background);
 }
 button:focus {
   outline: none;
   box-shadow: none;
+}
+button .btn-loading {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 12%;
+  left: 10%;
+  background-color: var(--btn-background);
+  opacity: 0;
+}
+button .btn-loading:hover {
+  --btn-background: #f46835;
+  background-color: var(--btn-background);
+}
+button .btn-loading.show {
+  opacity: 1;
+}
+
+img.icon-loading {
+  width: auto;
+  height: 100%;
+  opacity: 0;
+}
+.show > img.icon-loading {
+  animation: rotation 2s infinite linear;
+  opacity: 1;
 }
 
 footer {
@@ -174,7 +227,7 @@ footer .terms-detail {
   right: 100px;
   text-decoration: underline;
 }
-footer .terms-detail p {
+footer .terms-detail a {
   font-size: 14px;
   color: #4982ce;
   cursor: pointer;
@@ -201,6 +254,11 @@ footer .terms-detail p {
 .vobil-header p.main {
   font-size: 22px;
   font-weight: 700;
+}
+
+.vobil-header a.tel {
+  font-size: 22px;
+  color: #233233;
 }
 
 .vobil-header p.agent {
@@ -276,6 +334,7 @@ footer .terms-detail p {
 }
 
 .vobil-content > .help .form label.checkbox {
+  position: relative;
   font-weight: 300;
   font-size: 12px;
   color: #233233;
@@ -285,6 +344,60 @@ footer .terms-detail p {
 .vobil-content > .help .form p {
  margin: 10px 0px;
 }
+
+.terms-privacy {
+  color: #233233;
+  font-size: 18px;
+}
+
+.terms-privacy p {
+  margin: 12px 0px;
+  line-height: 26px;
+}
+
+.terms-privacy li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.terms-privacy-head {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.terms-privacy-head-desc {
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+p.terms-privacy-main-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 60px 0px 30;
+  color: #ea5a25;
+}
+.terms-privacy-section {
+  margin: 20px 0px 40px;
+}
+.terms-privacy-section-title {
+  margin: 10px 0px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4982ce;
+}
+
+
+/* animation */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
 @media only screen and (max-width: 767px) { 
   h1 {
     width: 50vw;
@@ -292,9 +405,6 @@ footer .terms-detail p {
     margin: 0px 10vw;
     font-size: 22px;
     text-align: center;
-  }
-  p.tel {
-    font-size: 14px;
   }
   p, li {
     font-size: 16px;
@@ -308,9 +418,17 @@ footer .terms-detail p {
     width: fit-content;
     margin: auto;
   }
+  li {
+    text-align: left;
+  }
+  input ~ span.error {
+    right: 50%;
+    transform: translate(50%);
+  }
   footer {
     flex-direction: column;
     height: 80px;
+    text-align: center;
     background-color: rgba(219, 232, 237, 0.7);
   }
   footer .terms-detail {
@@ -330,6 +448,9 @@ footer .terms-detail p {
     margin-right: 2vw;
   }
   .vobil-header p.main {
+    font-size: 14px;
+  }
+  .vobil-header a.tel {
     font-size: 14px;
   }
   .vobil-header p.agent {
@@ -364,8 +485,12 @@ footer .terms-detail p {
   .vobil-content > .help .form {
     margin: 20px auto 0px;
   }
+  .vobil-content > .help .form label.checkbox{
+    margin-bottom: 16px;
+  }
   .vobil-content > .help .form .form-row:not(.inner) {
     flex-direction: column;
+    gap: 0px;
   }
   .vobil-content > .help .form .form-row > .form-column {
     width: 100%;
@@ -373,9 +498,27 @@ footer .terms-detail p {
   }
   .vobil-content > .help .form .actions {
     text-align: center;
+    margin-top: 8px;
   }
 
   .vobil-content > .help .form .actions label {
     display: block;
+  }
+
+  .terms-privacy {
+    padding: 0px 4vw;
+    background-color: #ffffff;
+  }
+  .terms-privacy-head {
+    line-height: 30px;
+    font-size: 30px;
+    margin-top: 30px;
+  }
+  .terms-privacy-section-title {
+    line-height: 24px;
+  }
+  .terms-privacy p {
+    margin: 2px 0px;
+    line-height: 22px;
   }
 }

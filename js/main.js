@@ -51,7 +51,13 @@ $(document).ready(function () {
 
 $("#vobil-form-btn").click((e) => {
   const accept = document.querySelector("#accept:checked");
-  if (accept == null) return;
+  const errorAccept = document.querySelector("#accept~span.error");
+  if (accept == null) {
+    if (!errorAccept.classList.contains("show"))
+      errorAccept.classList.add("show");
+    return;
+  }
+  errorAccept.classList.remove("show");
 
   e.preventDefault();
   const name = document.querySelector("#name").value;
@@ -68,6 +74,9 @@ $("#vobil-form-btn").click((e) => {
   formData.append("phone", phone);
   formData.append("block", "Vobil");
 
+  const loading = document.querySelector("#form-submit");
+  if (!loading.classList.contains("show")) loading.classList.add("show");
+
   fetch(
     "https://cors.seasalt.ai/https://script.google.com/macros/s/AKfycbzmVEBYVXnDqPCpeKjxP0SAX5dMNSy5OWEPj0w4OiPVOEifoRvPNLGq_bk9nKoMmZTa_Q/exec",
     {
@@ -79,15 +88,17 @@ $("#vobil-form-btn").click((e) => {
     }
   )
     .then((response) => {
-      document.querySelector("#name").value = '';
-      document.querySelector("#age").value = '';
-      document.querySelector("#gender").value = '';
-      document.querySelector("#zipcode").value = '';
-      document.querySelector("#phone").value = '';
-      document.querySelector('#accept').checked = false;
+      loading.classList.remove("show");
+      document.querySelector("#name").value = "";
+      document.querySelector("#age").value = "";
+      document.querySelector("#gender").value = "";
+      document.querySelector("#zipcode").value = "";
+      document.querySelector("#phone").value = "";
+      document.querySelector("#accept").checked = false;
     })
     .catch((error) => {
       //錯誤結果處理
+      loading.classList.remove("show");
     });
 });
 
