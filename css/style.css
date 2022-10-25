@@ -85,6 +85,8 @@ ol.select-options li:hover {
 ol.desc-list {
   flex-direction: column;
   gap: 0px;
+  padding: 0px;
+  line-height: 26px;
 }
 
 ol.desc-list.inner {
@@ -92,9 +94,6 @@ ol.desc-list.inner {
   margin-left: 20px;
 }
 
-ol.desc-list li {
-  margin: 4px 0px;
-}
 
 input[type='text'] {
   min-width: 132px;
@@ -389,11 +388,6 @@ footer .terms-detail a:hover {
   font-size: 18px;
 }
 
-.terms-privacy p {
-  margin: 12px 0px;
-  line-height: 26px;
-}
-
 .terms-privacy li {
   display: flex;
   align-items: baseline;
@@ -404,13 +398,14 @@ footer .terms-detail a:hover {
   font-size: 40px;
   font-weight: 700;
   padding: 30px 0px 10px;
+  color: #233233;
 }
 .terms-privacy-head-desc {
   font-size: 22px;
   margin: 20px 0px 40px;
   margin-bottom: 40px;
 }
-p.terms-privacy-main-title {
+.terms-privacy-main-title {
   font-size: 28px;
   font-weight: 700;
   margin: 30px 0px;
@@ -425,6 +420,10 @@ p.terms-privacy-main-title {
   font-weight: 700;
   color: #4982ce;
 }
+.terms-privacy-section-desc {
+  margin: 12px 0px;
+  line-height: 26px;
+}
 
 
 /* animation */
@@ -437,6 +436,17 @@ p.terms-privacy-main-title {
   }
 }
 
+@media only screen and (max-width: 1366px) { 
+  footer {
+    flex-direction: column;
+    height: 80px;
+    text-align: center;
+  }
+  footer .terms-detail {
+    position: relative;
+    right: 0px;
+  }
+}
 
 @media only screen and (max-width: 767px) { 
   h1 {
@@ -457,9 +467,9 @@ p.terms-privacy-main-title {
     gap: 0px;
     width: fit-content;
     margin: auto;
-  }
-  ol.desc-list li {
-    margin: 0px 0px;
+  } 
+  ol.desc-list {
+    line-height: 22px;
   }
   li {
     text-align: left;
@@ -468,15 +478,9 @@ p.terms-privacy-main-title {
     right: 50%;
     transform: translate(50%);
   }
+
   footer {
-    flex-direction: column;
-    height: 80px;
-    text-align: center;
     background-color: rgba(219, 232, 237, 0.7);
-  }
-  footer .terms-detail {
-    position: relative;
-    right: 0px;
   }
 
   .divider {
@@ -563,13 +567,14 @@ p.terms-privacy-main-title {
   }
   .terms-privacy-section-title {
     margin-bottom: 10px;
+    font-size: 20px;
     line-height: 24px;
   }
-  .terms-privacy p {
-    margin: 2px 0px;
+  .terms-privacy-section-desc {
+    margin: 6px 0px;
     line-height: 22px;
   }
-  p.terms-privacy-main-title {
+  .terms-privacy-main-title {
     font-size: 24px;
     line-height: 26px;
     margin: 20px 0px;
