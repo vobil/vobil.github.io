@@ -66,6 +66,21 @@ $("#vobil-form-btn").click((e) => {
   const zipcode = document.querySelector("#zipcode").value;
   const phone = document.querySelector("#phone").value;
 
+  checkInput("name", name);
+  checkInput("age", age);
+  checkInput("gender", gender);
+  checkInput("zipcode", zipcode);
+  checkInput("phone", phone);
+
+  if (
+    name === "" ||
+    age === "" ||
+    gender === "" ||
+    zipcode === "" ||
+    phone === ""
+  )
+    return;
+
   const formData = new FormData();
   formData.append("name", name);
   formData.append("age", age);
@@ -129,3 +144,19 @@ genderOptions.addEventListener("click", (e) => {
   }
   genderInput.value = e.target.innerText;
 });
+
+function checkInput(key, value) {
+  const input = document.querySelector(`#${key}`);
+  const error = document.querySelector(`#${key}~span.error`);
+  if (value === "") {
+    if (!input.classList.contains("error")) {
+      input.classList.add("error");
+      error.classList.add("show");
+    }
+  } else {
+    if (input.classList.contains("error")) {
+      input.classList.remove("error");
+      error.classList.remove("show");
+    }
+  }
+}

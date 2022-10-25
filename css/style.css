@@ -79,20 +79,6 @@ ol.desc-list {
   gap: 0px;
 }
 
-input ~ span.error {
-  display: block;
-  position: absolute;
-  top: 16px;
-  right: 0px;
-  font-size: 12px;
-  color: #ff2e56;
-  opacity: 0;
-}
-
-input ~ span.error.show {
-  opacity: 1;
-}
-
 input[type='text'] {
   min-width: 132px;
   height: 36px;
@@ -147,6 +133,32 @@ input[type=checkbox]:checked::before {
 
 input:not([type='checkbox']):hover {
   background-color: #f5f5f5;
+}
+
+input.error {
+  border-color: #ff2e56;
+}
+input ~ span.error {
+  display: block;
+  position: absolute;
+  font-size: 12px;
+  color: #ff2e56;
+  opacity: 0;
+}
+input ~ span.checkbox-error {
+  top: 16px;
+  right: 0px;
+}
+input ~ span.input-error {
+  top: 10px;
+  right: 0px;
+}
+input ~ span.select-error {
+  top: -20px;
+  right: 0px;
+}
+input ~ span.error.show {
+  opacity: 1;
 }
 
 .select {
@@ -228,9 +240,16 @@ footer .terms-detail {
   text-decoration: underline;
 }
 footer .terms-detail a {
+  width: 116px;
   font-size: 14px;
   color: #4982ce;
   cursor: pointer;
+}
+footer .terms-detail a.sm {
+ width: 40px;
+}
+footer .terms-detail a:hover {
+  font-weight: 700;
 }
 
 .divider {
@@ -259,6 +278,10 @@ footer .terms-detail a {
 .vobil-header a.tel {
   font-size: 22px;
   color: #233233;
+}
+
+.vobil-header a.tel:hover {
+  font-weight: 700;
 }
 
 .vobil-header p.agent {
@@ -317,6 +340,7 @@ footer .terms-detail a {
 }
 
 .vobil-content > .help .form .form-column {
+  position: relative;
   width: 50%;
 }
 
@@ -421,7 +445,7 @@ p.terms-privacy-main-title {
   li {
     text-align: left;
   }
-  input ~ span.error {
+  input ~ span.checkbox-error {
     right: 50%;
     transform: translate(50%);
   }
@@ -520,5 +544,10 @@ p.terms-privacy-main-title {
   .terms-privacy p {
     margin: 2px 0px;
     line-height: 22px;
+  }
+  p.terms-privacy-main-title {
+    font-size: 24px;
+    line-height: 26px;
+    margin-bottom: 30px;
   }
 }
