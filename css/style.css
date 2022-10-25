@@ -79,6 +79,10 @@ ol.desc-list {
   gap: 0px;
 }
 
+ol.desc-list p {
+  margin: 6px 0px;
+}
+
 input[type='text'] {
   min-width: 132px;
   height: 36px;
@@ -388,6 +392,7 @@ footer .terms-detail a:hover {
 .terms-privacy-head {
   font-size: 40px;
   font-weight: 700;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 .terms-privacy-head-desc {
@@ -404,7 +409,7 @@ p.terms-privacy-main-title {
   margin: 20px 0px 40px;
 }
 .terms-privacy-section-title {
-  margin: 10px 0px;
+  margin: 10px 0px 14px;
   font-size: 22px;
   font-weight: 700;
   color: #4982ce;
@@ -441,6 +446,9 @@ p.terms-privacy-main-title {
     gap: 0px;
     width: fit-content;
     margin: auto;
+  }
+  ol.desc-list p{
+    margin: 2px 0px;
   }
   li {
     text-align: left;
@@ -536,9 +544,11 @@ p.terms-privacy-main-title {
   .terms-privacy-head {
     line-height: 30px;
     font-size: 30px;
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
   .terms-privacy-section-title {
+    margin-bottom: 10px;
     line-height: 24px;
   }
   .terms-privacy p {
