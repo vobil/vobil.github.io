@@ -276,7 +276,7 @@ footer .terms-detail a:hover {
   display: flex;
   align-items: center;
   height: 62px;
-  padding: 0px 10vw;
+  padding: 0px 8vw;
 }
 
 .vobil-header .vobil-logo {
@@ -313,7 +313,7 @@ footer .terms-detail a:hover {
 
 .vobil-content {
   position: relative;
-  padding: 40px 10vw 80px;
+  padding: 40px 8vw 80px;
   background-image: var(--landingBgImage);
   background-position: center;
   background-size: cover;
@@ -398,17 +398,17 @@ footer .terms-detail a:hover {
   font-size: 40px;
   font-weight: 700;
   padding: 30px 0px 10px;
+  margin: 0px;
   color: #233233;
 }
 .terms-privacy-head-desc {
   font-size: 22px;
-  margin: 20px 0px 40px;
-  margin-bottom: 40px;
+  margin: 10px 0px;
 }
 .terms-privacy-main-title {
   font-size: 28px;
   font-weight: 700;
-  margin: 30px 0px;
+  margin: 10px 0px 30px;
   color: #ea5a25;
 }
 .terms-privacy-section {
@@ -450,9 +450,9 @@ footer .terms-detail a:hover {
 
 @media only screen and (max-width: 767px) { 
   h1 {
-    width: 50vw;
-    padding-top: 12vw;
-    margin: 0px 10vw;
+    width: 46%;
+    padding-top: 16%;
+    margin: 0px 2vw;
     font-size: 22px;
     text-align: center;
   }
@@ -562,7 +562,7 @@ footer .terms-detail a:hover {
     padding: 40px 0px 0px;
   }
   .terms-privacy-head-desc {
-    margin: 20px 0px;
+    margin: 20px 0px 0px;
     font-size: 20px;
   }
   .terms-privacy-section-title {

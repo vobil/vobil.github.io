@@ -92,6 +92,17 @@ $("#vobil-form-btn").click((e) => {
   const loading = document.querySelector("#form-submit");
   if (!loading.classList.contains("show")) loading.classList.add("show");
 
+  dataLayer.push({
+    'event': 'form-submit',
+    'data': {
+      'name': name,
+      'age': age,
+      'gender':gender,
+      'zipcode': zipcode,
+      'phone': phone
+    }
+  })
+
   fetch(
     "https://cors.seasalt.ai/https://script.google.com/macros/s/AKfycbzmVEBYVXnDqPCpeKjxP0SAX5dMNSy5OWEPj0w4OiPVOEifoRvPNLGq_bk9nKoMmZTa_Q/exec",
     {
