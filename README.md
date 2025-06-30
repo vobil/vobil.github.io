@@ -7,7 +7,8 @@ A modern, production-ready website for Vobil.com featuring a futuristic gaming U
 - **Futuristic Gaming UI** - Dark theme with neon purple/cyan accents and glowing elements
 - **Interactive Demo** - Live simulation of AI agent phone calls with real-time transcription
 - **Dual-Audience Design** - Serves both human developers and AI agents discovering capabilities
-- **Responsive Design** - Optimized for all devices from mobile to desktop
+- **Mobile-First Responsive Design** - Optimized for all devices from mobile to desktop
+- **SEO Optimized** - Comprehensive SEO with structured data for AI agent discovery
 - **Production-Ready** - Built with performance, accessibility, and SEO in mind
 - **Modern Tech Stack** - React 18, TypeScript, Tailwind CSS, and Vite
 
@@ -73,7 +74,7 @@ The development server will start at `http://localhost:5173` by default. The pag
 ```
 src/
 ├── components/           # React components
-│   ├── Header.tsx       # Navigation header
+│   ├── Header.tsx       # Navigation header with mobile menu
 │   ├── Hero.tsx         # Hero section with interactive demo
 │   ├── UseCases.tsx     # Three use case showcases
 │   ├── AIAgentDiscovery.tsx  # AI agent integration section
@@ -86,6 +87,10 @@ src/
 ├── main.tsx             # Application entry point
 ├── index.css            # Global styles and Tailwind imports
 └── vite-env.d.ts        # Vite type definitions
+public/
+├── sitemap.xml          # SEO sitemap
+├── robots.txt           # Search engine directives
+└── favicon files        # Various favicon formats
 ```
 
 ### Code Quality
@@ -156,6 +161,14 @@ This will:
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
 ```
 
 #### 2. Vercel
@@ -169,7 +182,22 @@ This will:
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "vite"
+  "framework": "vite",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -296,6 +324,110 @@ export default defineConfig({
 });
 ```
 
+## 🔍 SEO Optimization
+
+### Sitemap and Robots.txt
+
+The website includes comprehensive SEO optimization:
+
+#### **Sitemap.xml** (`/public/sitemap.xml`)
+- **Comprehensive URL mapping** with 30+ pages
+- **Priority-based ranking** (1.0 for homepage, 0.9 for key pages)
+- **Change frequency indicators** for search engines
+- **Last modification dates** for content freshness
+- **Structured for both human and AI discovery**
+
+#### **Robots.txt** (`/public/robots.txt`)
+- **AI-friendly directives** allowing GPTBot, ChatGPT, Claude, etc.
+- **Crawl delay settings** for respectful crawling
+- **Protected paths** (admin, config, logs)
+- **API documentation access** for AI agent discovery
+
+#### **Meta Tags and Structured Data**
+- **Comprehensive meta tags** in `index.html`
+- **Open Graph** and **Twitter Card** optimization
+- **JSON-LD structured data** for AI agents
+- **Schema.org markup** for software applications
+
+### SEO Best Practices Implemented
+
+1. **Technical SEO**
+   - ✅ Semantic HTML structure
+   - ✅ Proper heading hierarchy (H1-H6)
+   - ✅ Alt text for all images
+   - ✅ Meta descriptions under 160 characters
+   - ✅ Canonical URLs
+   - ✅ Mobile-first responsive design
+
+2. **Performance SEO**
+   - ✅ Optimized images with proper formats
+   - ✅ Minified CSS and JavaScript
+   - ✅ Gzip compression ready
+   - ✅ Fast loading times (<3s LCP)
+   - ✅ Core Web Vitals optimization
+
+3. **Content SEO**
+   - ✅ Keyword-optimized content
+   - ✅ Internal linking structure
+   - ✅ Breadcrumb navigation
+   - ✅ FAQ sections
+   - ✅ Technical documentation
+
+4. **AI Agent Discovery**
+   - ✅ Machine-readable API documentation
+   - ✅ MCP server endpoint information
+   - ✅ Structured data for capabilities
+   - ✅ ANS registry metadata
+
+### Updating SEO Content
+
+#### **Update Sitemap**
+1. Edit `/public/sitemap.xml`
+2. Update `<lastmod>` dates when content changes
+3. Add new URLs with appropriate priority and change frequency
+4. Submit updated sitemap to Google Search Console
+
+#### **Meta Tags**
+1. Update meta descriptions in `index.html`
+2. Modify Open Graph images and descriptions
+3. Update structured data as features change
+4. Test with Facebook Debugger and Twitter Card Validator
+
+#### **Content Optimization**
+1. Use keyword research tools (Ahrefs, SEMrush)
+2. Optimize for "AI phone agent", "phone use", "MCP integration"
+3. Create content clusters around main topics
+4. Monitor search rankings and adjust accordingly
+
+### SEO Monitoring and Analytics
+
+#### **Google Search Console Setup**
+1. Verify domain ownership
+2. Submit sitemap: `https://vobil.com/sitemap.xml`
+3. Monitor crawl errors and indexing status
+4. Track search performance and keywords
+
+#### **Analytics Integration**
+```javascript
+// Google Analytics 4
+gtag('config', 'GA_MEASUREMENT_ID', {
+  page_title: 'Vobil - AI Phone Agent',
+  page_location: window.location.href
+});
+
+// Track key events
+gtag('event', 'trial_signup', {
+  event_category: 'engagement',
+  event_label: 'free_trial'
+});
+```
+
+#### **Performance Monitoring**
+- **Core Web Vitals**: Monitor LCP, FID, CLS
+- **Page Speed**: Use Google PageSpeed Insights
+- **Mobile Usability**: Test with Google Mobile-Friendly Test
+- **SEO Audits**: Regular Lighthouse audits
+
 ## 🧪 Testing
 
 ### Manual Testing Checklist
@@ -305,6 +437,7 @@ export default defineConfig({
 - [ ] **Performance**: Check loading times and smooth scrolling
 - [ ] **Accessibility**: Test keyboard navigation and screen reader compatibility
 - [ ] **Cross-Browser**: Test on Chrome, Firefox, Safari, and Edge
+- [ ] **SEO**: Validate structured data and meta tags
 
 ### Performance Optimization
 
@@ -312,6 +445,15 @@ export default defineConfig({
 2. **Code Splitting**: Leverage Vite's automatic code splitting
 3. **Bundle Analysis**: Use `npm run build -- --analyze` to analyze bundle size
 4. **Lighthouse Audit**: Run Chrome DevTools Lighthouse for performance insights
+
+### SEO Testing Tools
+
+1. **Google Search Console** - Monitor search performance
+2. **Google PageSpeed Insights** - Test page speed and Core Web Vitals
+3. **Google Mobile-Friendly Test** - Verify mobile optimization
+4. **Schema Markup Validator** - Test structured data
+5. **Facebook Debugger** - Test Open Graph tags
+6. **Twitter Card Validator** - Test Twitter meta tags
 
 ## 🐛 Troubleshooting
 
@@ -343,6 +485,11 @@ npm install
 - Use absolute paths starting with `/`
 - Check build output in `dist/` folder
 
+**Issue**: SEO meta tags not showing
+- Verify meta tags in `index.html`
+- Test with Facebook Debugger and Twitter Card Validator
+- Check for JavaScript rendering issues
+
 ### Performance Issues
 
 If the site loads slowly:
@@ -350,6 +497,16 @@ If the site loads slowly:
 2. Optimize images (use WebP, appropriate sizes)
 3. Enable gzip compression on your server
 4. Use a CDN for static assets
+5. Monitor Core Web Vitals
+
+### SEO Issues
+
+If search rankings are low:
+1. Submit sitemap to Google Search Console
+2. Check for crawl errors
+3. Optimize page titles and meta descriptions
+4. Improve page loading speed
+5. Build quality backlinks
 
 ## 📚 Additional Resources
 
@@ -358,6 +515,9 @@ If the site loads slowly:
 - [Tailwind CSS Documentation](https://tailwindcss.com/)
 - [TypeScript Documentation](https://www.typescriptlang.org/)
 - [Lucide React Icons](https://lucide.dev/)
+- [Google Search Console](https://search.google.com/search-console)
+- [Google PageSpeed Insights](https://pagespeed.web.dev/)
+- [Schema.org Documentation](https://schema.org/)
 
 ## 🤝 Contributing
 

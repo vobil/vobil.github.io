@@ -10,6 +10,17 @@
   body {
     @apply bg-gray-950 text-white;
   }
+  
+  /* Improve touch targets for mobile */
+  button, a {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Better text rendering on mobile */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @layer utilities {
@@ -26,5 +37,69 @@
       linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
+  }
+  
+  /* Mobile-specific utilities */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent zoom on input focus on iOS */
+  @media screen and (max-width: 768px) {
+    input, select, textarea {
+      font-size: 16px;
+    }
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Improve scrolling performance */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Better tap highlighting */
+  button, a {
+    -webkit-tap-highlight-color: rgba(139, 92, 246, 0.2);
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gray-900\/50 {
+    @apply bg-gray-900;
+  }
+  
+  .border-purple-500\/20 {
+    @apply border-purple-500;
+  }
+  
+  .border-cyan-500\/20 {
+    @apply border-cyan-500;
   }
 }
