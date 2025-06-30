@@ -1,0 +1,49 @@
+# Robots.txt for Vobil.com - AI Phone Use Agent Platform
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vobil.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all AI agents and crawlers to discover phone use capabilities
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Disallow admin and internal paths
+Disallow: /admin/
+Disallow: /api/internal/
+Disallow: /.env
+Disallow: /config/
+Disallow: /logs/
+
+# Allow API documentation for AI discovery
+Allow: /api/docs/
+Allow: /api/v1/
+Allow: /mcp/
+Allow: /ans/
+
+# Cache and temporary files
+Disallow: /cache/
+Disallow: /tmp/
+Disallow: /*.log$
+
+# Development and testing
+Disallow: /dev/
+Disallow: /test/
+Disallow: /staging/
