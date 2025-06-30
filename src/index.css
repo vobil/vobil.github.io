@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gray-950 text-white;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px currentColor;
+  }
+  
+  .border-glow {
+    border-shadow: 0 0 20px currentColor;
+  }
+  
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
